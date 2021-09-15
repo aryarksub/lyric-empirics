@@ -2,7 +2,7 @@
 
 import song_utility as sutil
 
-## STATISTICS FOR SONG COMPARISON:
+## STATISTICS RECORDED FOR SONGS:
 ##    - Number of sections (NumSects)
 ##    - Word count (WdCnt): Number of total words
 ##    - Unique word count (UnqWdCnt): Number of unique words
