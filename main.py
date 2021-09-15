@@ -1,4 +1,7 @@
 # LyricEmpirics
+# Arya Kondur
+# 9-3-2021
+
 # main.py
 # Program runs through this file. Holds public functions users can call.
 
