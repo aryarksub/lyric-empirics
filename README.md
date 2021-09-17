@@ -12,7 +12,13 @@ pip install lyric-empirics
 ```
 
 ## Usage
-two ways to use
+There are two ways to use `lyric-empirics`: interfacing with the Genius API client and obtaining song statistics. In either case, the first step is to import this package and initialize the API client as follows:
+
+```python
+import lyric-empirics as lyremp
+client = lyremp.init_genius(access_token)
+```
+You must provide an access token in order for `init_genius()` to successfully initialize the Genius API client. As mentioned in [Setup](#Setup), this token will be unique to your Genius.com account.
 
 ### Working with Genius
 genius
