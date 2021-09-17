@@ -18,7 +18,7 @@ There are two ways to use `lyric-empirics`: interfacing with the Genius API clie
 import lyric-empirics as lyremp
 client = lyremp.init_genius(access_token)
 ```
-You must provide an access token in order for `init_genius` to successfully initialize the Genius API client. As mentioned in [Setup](#Setup), this token will be unique to your Genius.com account.
+You must provide an access token in order for `init_genius()` to successfully initialize the Genius API client. As mentioned in [Setup](#Setup), this token will be unique to your Genius.com account.
 
 ### Working with Genius
 genius
