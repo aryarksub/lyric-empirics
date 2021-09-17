@@ -25,22 +25,39 @@ Interaction with the Genius API client can be done by either adjusting its setti
 
 1. Timeout: The maximum amount of time taken to process a request
     - Default is 10 seconds
-    - To change this setting, use `change_genius_timeout(new_time)` and provide a positive integer value
-```python
-lyremp.change_genius_timeout(20)
-```
+    - To change this setting, call `change_genius_timeout(new_time)` with a positive integer value as a parameter
+
+        ```python
+        lyremp.change_genius_timeout(20)
+        ```
+
 2. Sleep: The minimum amount of time to wait between consecutive requests
     - Default is 0.2 seconds
-    - To change this setting, use `change_genius_sleep(new_sleep)` and provide a positive decimal (float) value
-```python
-lyremp.change_genius_sleep(0.5)
-```
+    - To change this setting, call `change_genius_sleep(new_sleep)` with a positive decimal (float) value as a parameter
+
+        ```python
+        lyremp.change_genius_sleep(0.5)
+        ```
+
 3. Excluded Words: A list of words to ignore when attempting to find song matches when searching through titles
     - The client will, by default, exclude live performances (the term "(Live)" is excluded)
-    - To use a new list of excluded words, call `change_excluded_words(words)` with the desired list of strings as a parameter
-```python
-lyremp.change_excluded_words(["(Remix)", "(Skit)"])
-```
+    - To use a new list of excluded strings, call `change_excluded_words(words)` with the desired list of strings as a parameter
+
+        ```python
+        lyremp.change_excluded_words(["(Remix)", "(Skit)"])
+        ```
+
+    - To add a single string to exclude, call `add_excluded_word(word)` with the desired string to exclude as a parameter
+
+        ```python
+        lyremp.add_excluded_word("(Live)")
+        ```
+        
+    - To remove a string from the excluded list, call `remove_excluded_word(word)` with the desired string to include as a parameter
+
+        ```python
+        lyremp.remove_excluded_word("(Skit)")
+        ```
 
 ### Extracting Statistics
 stats
