@@ -2,7 +2,7 @@
 # Arya Kondur
 # 9-3-2021
 
-# main.py
+# lyric_empirics.py
 # Program runs through this file. Holds public functions users can call.
 
 
