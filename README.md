@@ -58,6 +58,26 @@ Interaction with the Genius API client can be done by either adjusting its setti
         ```python
         lyremp.remove_excluded_word("(Skit)")
         ```
+        
+The Genius API client is automatically set up to display status messages when settings are changed or songs are found/saved. It is highly recommended to leave this setting turned on, but to turn off these messages, call `display_status_messages()` with a boolean that evaluates to `False`. The opposite can be done by providing a boolean that evaluates to `True`.
+
+```python
+lyremp.display_status_messages(False) # Turn status messages OFF
+lyremp.display_status_messages(True)  # Turn status messages ON
+```
+
+To find a song, it is necessary to provide both its name and the artist when calling `find_song()`. The function will return a `Song` object that can later be used to extract statistics (continue [below](#Extracting Statistics) for more information). The song returned is the one that most closely matches the given information, either in its title or lyrics. To obtain the most accurate match possible, provide the song's name and artist in their entirety. If no match is found, the function will return `None`.
+
+```python
+song = lyremp.find_song('rainmaker', 'bugzy') # Result: 'The Rainmaker' by Bugzy Malone
+```
+
+To save a song, call `save_song()` with a `Song` object as a parameter. The song's statistics will be saved to `song_data.csv` (located in the `LyricEmpiricsStorage` directory which is created in the current working directory). The song's lyrics will be saved to a file with an easily identifiable title in the `SongLyrics` directory (located within the `LyricEmpiricsStorage` directory). 
+
+```python
+song = lyremp.find_song('infinite', 'eminem') # Result: 'Infinite' by Eminem
+lyremp.save_song(song) # Lyrics stored in Infinite_Eminem.txt
+```
 
 ### Extracting Statistics
 stats
