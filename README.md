@@ -66,7 +66,7 @@ lyremp.display_status_messages(False) # Turn status messages OFF
 lyremp.display_status_messages(True)  # Turn status messages ON
 ```
 
-To find a song, it is necessary to provide both its name and the artist when calling `find_song()`. The function will return a `Song` object that can later be used to extract statistics (continue [below](#Extracting Statistics) for more information). The song returned is the one that most closely matches the given information, either in its title or lyrics. To obtain the most accurate match possible, provide the song's name and artist in their entirety. If no match is found, the function will return `None`.
+To find a song, it is necessary to provide both its name and the artist when calling `find_song()`. The function will return a `Song` object that can later be used to extract statistics (continue [below](#Extracting-Statistics) for more information). The song returned is the one that most closely matches the given information, either in its title or lyrics. To obtain the most accurate match possible, provide the song's name and artist in their entirety. If no match is found, the function will return `None`.
 
 ```python
 song = lyremp.find_song('rainmaker', 'bugzy') # Result: 'The Rainmaker' by Bugzy Malone
