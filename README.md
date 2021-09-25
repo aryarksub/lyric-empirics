@@ -80,4 +80,19 @@ lyremp.save_song(song) # Lyrics stored in Infinite_Eminem.txt
 ```
 
 ### Extracting Statistics
-stats
+Extracting statistics can either be done as individual procedures or as a single bulk action. A complete list of the individual getter methods can be found in `song.py`, along with descriptions of particular statistics. The following examples represent calls of functions that may be used frequently.
+
+```python
+song = lyremp.find_song('spies', 'coldplay') # Result: 'Spies' by Coldplay
+word_count = song.get_word_count() # Number of total words in the song
+unq_word_count = song.get_unique_word_count() # Number of unique words in the song
+rhyme_score = song.get_rhyme_score() # Sum of rhyme scores of recognizable words
+rhyme_density = song.get_rhyme_density() # Percentage of words that have rhyme score >= 1
+```
+
+The function `get_stat_group()` returns a list of statistics and characteristics related to the `Song` object on which it is called. These statistics include all 16 that are listed at the top of `song.py`, as well as the song's name, primary artist, and Genius.com ID.
+
+```python
+song = lyremp.find_song('thiago', 'dave') # Result: 'Thiago Silva' by Dave
+all_stats = song.get_stat_group()
+```
