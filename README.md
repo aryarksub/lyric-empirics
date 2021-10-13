@@ -5,11 +5,7 @@
 To use `lyric-empirics`, it is necessary to [create a free Genius.com account](https://genius.com/signup) that allows access to the Genius API used by this package. You will be provided with an access token that must be entered when using this package (see this project's [Usage](#Usage) section for further instructions).
 
 ## Installation
-Python 3 is required to install this package. Use the following command:
-
-```bash
-pip install lyric-empirics
-```
+Python 3 is required to use `lyric-empirics`. Download this repository and run `lyric_empirics.py`.
 
 ## Usage
 There are two ways to use `lyric-empirics`: interfacing with the Genius API client and obtaining song statistics. In either case, the first step is to import this package and initialize the API client as follows:
