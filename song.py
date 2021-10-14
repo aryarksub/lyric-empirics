@@ -2,7 +2,7 @@
 
 import song_utility as sutil
 
-## STATISTICS RECORDED FOR SONGS:
+## STATISTICS FOR SONG COMPARISON:
 ##    - Number of sections (NumSects)
 ##    - Word count (WdCnt): Number of total words
 ##    - Unique word count (UnqWdCnt): Number of unique words
@@ -39,13 +39,15 @@ class Song:
 
         if self._num_sections != 0:
             self._find_stats()
+            self._compute_lyrical_strength()
         else:
             self._sections_unique = self._all_words = self._word_count = self._unique_words = \
                 self._unique_word_count = self._avg_section_length = self._avg_section_unique_words = \
                 self._unique_word_pct = self._section_similarity = self._avg_syllable_count = \
                 self._rhyme_dict = self._total_rhyme_score = self._rhyme_density = \
                 self._large_rhyme_density = self._avg_section_rhyme_score = self._avg_word_rhyme_score = \
-                self._proximity_rhyme_score = self._avg_section_prox_score = self._avg_word_prox_score = None
+                self._proximity_rhyme_score = self._avg_section_prox_score = self._avg_word_prox_score = \
+                self._lyrical_strength = None
 
     '''
     Find stats for the given song.
@@ -74,7 +76,20 @@ class Song:
 
         self._proximity_rhyme_score = sum(map(lambda x : sum(sutil.find_rhyme_scores(x).values()), self._sections_unique))
         self._avg_section_prox_score = round(self._proximity_rhyme_score / self._num_sections, 4)
-        self._avg_word_prox_score = round(self._proximity_rhyme_score / self._unique_word_count, 4)        
+        self._avg_word_prox_score = round(self._proximity_rhyme_score / self._unique_word_count, 4)
+
+    '''
+    Find lyrical strength based on unique word percentage, rhyme density, large rhyme density,
+    syllables per word, rhyme score per word, proximity rhyme score per word, and section similarity.
+    '''
+    def _compute_lyrical_strength(self):
+        # Statistics that are already between 0 and 1
+        # Higher section similarity is worse so we do 1 - value
+        val1 = self._unique_word_pct + self._rhyme_density + self._large_rhyme_density + (1 - self._section_similarity)
+        val2 = 2 * (self._avg_syllable_count - 1)
+        val3 = 1 if (temp := self._avg_word_rhyme_score / 3) > 1 else temp
+        val4 = 1 if (temp := self._avg_word_prox_score / 2) > 1 else temp
+        self._lyrical_strength = val1 + val2 + val3 + val4
 
     def __str__(self) -> str:
         return f'"{self._name}" by {self._artist}'
@@ -161,6 +176,9 @@ class Song:
     def get_avg_word_prox_score(self) -> float:
         return self._avg_word_prox_score
 
+    def get_lyrical_strength(self) -> float:
+        return self._lyrical_strength
+
     '''
     Get the group of statistics relevant to the song.
     '''
@@ -170,8 +188,5 @@ class Song:
                 self._proximity_rhyme_score, self._rhyme_density, self._large_rhyme_density,
                 self._avg_section_length, self._avg_syllable_count, self._avg_section_unique_words,
                 self._avg_section_rhyme_score, self._avg_word_rhyme_score,
-                self._avg_section_prox_score, self._avg_word_prox_score, self._section_similarity]
-                
-   
-            
-        
+                self._avg_section_prox_score, self._avg_word_prox_score, self._section_similarity,
+                self._lyrical_strength]
