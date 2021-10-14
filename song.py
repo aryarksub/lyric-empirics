@@ -81,6 +81,18 @@ class Song:
     '''
     Find lyrical strength based on unique word percentage, rhyme density, large rhyme density,
     syllables per word, rhyme score per word, proximity rhyme score per word, and section similarity.
+
+    Lyrical strength is calculated by using seven specific statistics that are normalized to account for
+    variations in verse and song length. Each of the statistics is scored on a scale from 0 to 1 (inclusive),
+    and then summed up. Scores closer to 7 (maximum) indicate songs that are lyrically strong. Lyrical
+    strength is calculated by adding the following values:
+        - Unique word percentage
+        - Rhyme density
+        - Large rhyme density
+        - 2 * (Syllables per word - 1)
+        - Rhyme score per word / 3 (cap at 1)
+        - Proximity rhyme score per word / 2 (cap at 1)
+        - 1 - Section similarity
     '''
     def _compute_lyrical_strength(self):
         # Statistics that are already between 0 and 1
