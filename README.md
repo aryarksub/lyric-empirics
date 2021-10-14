@@ -86,9 +86,18 @@ rhyme_score = song.get_rhyme_score() # Sum of rhyme scores of recognizable words
 rhyme_density = song.get_rhyme_density() # Percentage of words that have rhyme score >= 1
 ```
 
-The function `get_stat_group()` returns a list of statistics and characteristics related to the `Song` object on which it is called. These statistics include all 16 that are listed at the top of `song.py`, as well as the song's name, primary artist, and Genius.com ID.
+The function `get_stat_group()` returns a list of statistics and characteristics related to the `Song` object on which it is called. These statistics include all 16 that are listed at the top of `song.py`, as well as the song's name, primary artist, Genius.com ID, and lyrical strength.
 
 ```python
 song = lyremp.find_song('thiago', 'dave') # Result: 'Thiago Silva' by Dave
 all_stats = song.get_stat_group()
 ```
+
+Lyrical strength is calculated by using seven specific statistics that are normalized to account for variations in verse and song length. Each of the statistics is scored on a scale from 0 to 1 (inclusive), and then summed up. Scores closer to 7 (maximum) indicate songs that are lyrically strong. Lyrical strength is calculated by adding the following values:
+- Unique word percentage
+- Rhyme density
+- Large rhyme density
+- 2 * (Syllables per word - 1)
+- Rhyme score per word / 3 (capped at 1)
+- Proximity rhyme score per word / 2 (capped at 1)
+- 1 - Section similarity
