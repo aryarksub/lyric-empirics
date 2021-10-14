@@ -98,6 +98,6 @@ Lyrical strength is calculated by using seven specific statistics that are norma
 - Rhyme density
 - Large rhyme density
 - 2 * (Syllables per word - 1)
-- Rhyme score per word / 3 (cap at 1)
-- Proximity rhyme score per word / 2 (cap at 1)
+- Rhyme score per word / 3 (capped at 1)
+- Proximity rhyme score per word / 2 (capped at 1)
 - 1 - Section similarity
