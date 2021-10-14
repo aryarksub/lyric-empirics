@@ -155,7 +155,7 @@ def save_song(song: Song) -> None:
     headers = ['Name','Artist','ID','NumSects','WdCnt','UnqWdCnt','UnqWdPct',
                'TotRS','ProxRS','RymDens','LgRymDens','Wd/Sect','Syll/Wd',
                'UnqWd/Sect','RS/Sect','RS/Wd','ProxRS/Sect',
-               'ProxRS/Wd','SectSim']
+               'ProxRS/Wd','SectSim','LyrStren']
 
     stat_group = song.get_stat_group()
     stats_as_str = [str(x) for x in stat_group]
